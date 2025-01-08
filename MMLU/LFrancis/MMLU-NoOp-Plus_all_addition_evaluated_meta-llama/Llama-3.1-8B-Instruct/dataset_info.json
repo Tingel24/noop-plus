@@ -1,0 +1,71 @@
+{
+  "builder_name": "parquet",
+  "citation": "",
+  "config_name": "all_addition",
+  "dataset_name": "mmlu-no_op-plus",
+  "dataset_size": 9156289,
+  "description": "",
+  "download_checksums": {
+    "hf://datasets/LFrancis/MMLU-NoOp-Plus@10b732bfcb947de959e2ebef669fe62fee36b5dd/all_addition/train-00000-of-00001.parquet": {
+      "num_bytes": 4731170,
+      "checksum": null
+    }
+  },
+  "download_size": 4731170,
+  "features": {
+    "question": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "subject": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "choices": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "Sequence"
+    },
+    "answer": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "logprobs": {
+      "A": {
+        "dtype": "float64",
+        "_type": "Value"
+      },
+      "B": {
+        "dtype": "float64",
+        "_type": "Value"
+      },
+      "C": {
+        "dtype": "float64",
+        "_type": "Value"
+      },
+      "D": {
+        "dtype": "float64",
+        "_type": "Value"
+      }
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 13887459,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 9156289,
+      "num_examples": 14042,
+      "dataset_name": "mmlu-no_op-plus"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}
