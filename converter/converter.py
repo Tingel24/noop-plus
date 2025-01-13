@@ -28,7 +28,7 @@ def convert_naive_row(question_column, subject_list_column = None):
     return row_function
 
 def convert_naive(df, question_column: str = 'question', subject_list_column = None) -> Dataset:
-    check_if_dataset_contains_naive_sentence(df, question_column)
+    check_if_dataset_contains_naive_sentence(df, question_column, subject_list_column is not None)
     df_naive = df.progress_apply(convert_naive_row(question_column), axis=1)
     return Dataset.from_pandas(df_naive)
 
