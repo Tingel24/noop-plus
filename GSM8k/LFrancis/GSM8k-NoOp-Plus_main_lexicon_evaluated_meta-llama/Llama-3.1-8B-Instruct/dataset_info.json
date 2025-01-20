@@ -3,15 +3,15 @@
   "citation": "",
   "config_name": "main_lexicon",
   "dataset_name": "gsm8k-no_op-plus",
-  "dataset_size": 716714,
+  "dataset_size": 721362,
   "description": "",
   "download_checksums": {
-    "hf://datasets/LFrancis/GSM8k-NoOp-Plus@e8479aa5c81581b9c124b438dcd73f4ec82c0d5b/main_lexicon/train-00000-of-00001.parquet": {
-      "num_bytes": 419641,
+    "hf://datasets/LFrancis/GSM8k-NoOp-Plus@00f1339a0bc70bba197b7359c38d6ff789a9fea8/main_lexicon/train-00000-of-00001.parquet": {
+      "num_bytes": 421243,
       "checksum": null
     }
   },
-  "download_size": 419641,
+  "download_size": 421243,
   "features": {
     "question": {
       "dtype": "string",
@@ -32,11 +32,11 @@
   },
   "homepage": "",
   "license": "",
-  "size_in_bytes": 1136355,
+  "size_in_bytes": 1142605,
   "splits": {
     "train": {
       "name": "train",
-      "num_bytes": 716714,
+      "num_bytes": 721362,
       "num_examples": 1319,
       "dataset_name": "gsm8k-no_op-plus"
     }
