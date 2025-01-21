@@ -41,7 +41,7 @@ def convert_naive(df, question_column: str = 'question', subject_list_column=Non
     return Dataset.from_pandas(df_naive)
 
 
-def add_additional_information_to_question(question: str, client, model: str, custom_preprompt) -> str:
+def add_additional_information_to_question(question: str, client, model: str, custom_preprompt, nlp) -> str:
     standard_preprompt = ("""Output one additional sentence to this question that has no direct effect on the question.
 The sentence should be on topic, designed to confuse a inattentive reader. 
 Therefore it should not be a question and not change anything about the answer to the question.
@@ -54,32 +54,35 @@ Then Paul has to restart the download from the beginning.
 How load does it take to download the file?"
 
 Additional Sentence added:
-"The Windows update adds new features that resolve issues for unstable internet connections."
+"The Windows update adds new features that speed up downloads when using a VPN."
 
 Explanation (Do not add this in your output when generating the additional sentence):
-The additional features added to not change the answer to the question as Paul is not mentioned to have a unstable connection.
+The additional Windows features added do not change the answer to the question as Paul is not mentioned to be using a VPN.
 
 Only output exactly the additional sentence and nothing else, the output will be copy/pasted as is. 
-It is extremely important that the sentence does not effect the answer to the question.""")
+It is extremely important that the sentence does not effect the answer to the question, while possibly tricking a inattentive problem solver.""")
     preprompt = custom_preprompt if custom_preprompt is not None else standard_preprompt
     addition_prompt = lambda q: str(preprompt + f"\nQuestion: \n'{q}'\nAdditional sentence:")
     response = client.chat.completions.create(messages=[{"role": "user", "content": addition_prompt(question), }],
         model=model, )
     result = response.choices[0].message.content
-    return question + " " + result
+    sentences = split_question_into_sentences(question, nlp)
 
 
-def convert_additional_row(question_column: str, client, model: str, custom_preprompt):
+    return " ".join([*sentences[:-1], result, sentences[-1]])
+
+
+def convert_additional_row(question_column: str, client, model: str, custom_preprompt, nlp):
     def row_function(row):
         row[question_column] = add_additional_information_to_question(row[question_column], client, model,
-                                                                      custom_preprompt)
+                                                                      custom_preprompt, nlp)
         return row
 
     return row_function
 
 
-def convert_additional(df, client, model, question_column: str = 'question', custom_preprompt=None) -> Dataset:
-    df_additional = df.progress_apply(convert_additional_row(question_column, client, model, custom_preprompt), axis=1)
+def convert_additional(df, client, model,nlp, question_column: str = 'question',  custom_preprompt: str=None, ) -> Dataset:
+    df_additional = df.progress_apply(convert_additional_row(question_column, client, model, custom_preprompt, nlp), axis=1)
     return Dataset.from_pandas(df_additional)
 
 
@@ -161,7 +164,7 @@ def split_question_into_sentences(question, nlp):
 
 def convert_syntax_row(question_column, nlp):
     def row_function(row):
-        row[question_column] = "".join(
+        row[question_column] = " ".join(
             [rephrase_question(sentence, nlp) for sentence in split_question_into_sentences(row[question_column], nlp)])
         return row
 
