@@ -1,11 +1,22 @@
 {
-    "scores": {
-        "addition": 0.7930250189537529,
-        "lexicon": 0.0,
-        "syntax": 0.0,
-        "naive": 0.0,
-        "baseline": 0.8036391205458681,
-        "our_baseline": 0.8059135708870356
-    },
-    "model": "meta-llama/Llama-3.1-8B-Instruct"
+  "meta-llama/Llama-3.1-8B-Instruct": {
+    "addition": 0.7422289613343442,
+    "lexicon": 0.6952236542835482,
+    "syntax": 0.77710386656558,
+    "naive": 0.8233510235026535,
+    "baseline": 0.8036391205458681,
+    "our_baseline": 0.8059135708870356,
+    "typo": 0.733131159969674,
+    "scramble": 0.6224412433661866
+  },
+  "meta-llama/Meta-Llama-3-8B-Instruct": {
+    "addition": 0.6618650492797574,
+    "our_baseline": 0.7505686125852918,
+    "lexicon": 0.6391205458680819,
+    "syntax": 0.7065959059893859,
+    "naive": 0.7490523123578469,
+    "typo": 0.6595905989385898,
+    "scramble": 0.5496588324488249,
+    "baseline": 0.7513267626990144
+  }
 }

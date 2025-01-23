@@ -1,90 +1,182 @@
-<!DOCTYPE html><html><head>
+<!DOCTYPE html>
+<html>
+<head>
     <title>NooP+ Difference Table</title>
     <style>
-    table.diff {
-        width: 100%;
-        table-layout: fixed;
-        margin-bottom: 20px; /* Add space between tables */
-        border-spacing: 0; /* Remove default spacing */
-    }
-    td, th {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        white-space: normal;
-        font-size: 16px; /* Increase font size */
-        padding: 8px; /* Add padding inside cells */
-    }
-    td.diff_next, th.diff_next {
-        display: none; /* Hide columns with "t" */
-    }
-    td.diff_header, th.diff_header {
-        display: none; /* Hide columns with "1" */
-    }
-    colgroup:nth-child(1),
-    colgroup:nth-child(2),
-    colgroup:nth-child(3),
-    colgroup:nth-child(4) {
-        display: none; /* Hide unnecessary colgroups */
-    }
+        table.diff {
+            width: 100%;
+            table-layout: fixed;
+            margin-bottom: 20px; /* Add space between tables */
+            border-spacing: 0; /* Remove default spacing */
+        }
 
-    /* Colors for diff classes */
-    .diff_add {
-        background-color: #d4edda; /* Light green background */
-        color: #155724; /* Dark green text */
-    }
-    .diff_chg {
-        background-color: #fff3cd; /* Light yellow background */
-        color: #856404; /* Dark yellow (brownish) text */
-    }
-    .diff_sub {
-        background-color: #f8d7da; /* Light red background */
-        color: #721c24; /* Dark red text */
-    }
+        td, th {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+            font-size: 16px; /* Increase font size */
+            padding: 8px; /* Add padding inside cells */
+        }
 
-    /* Optional: Add hover effect for better usability */
-    td.diff_add:hover, td.diff_chg:hover, td.diff_sub:hover {
-        filter: brightness(90%); /* Slightly darken on hover */
-    }
-</style>
+        td.diff_next, th.diff_next {
+            display: none; /* Hide columns with "t" */
+        }
+
+        td.diff_header, th.diff_header {
+            display: none; /* Hide columns with "1" */
+        }
+
+        colgroup:nth-child(1),
+        colgroup:nth-child(2),
+        colgroup:nth-child(3),
+        colgroup:nth-child(4) {
+            display: none; /* Hide unnecessary colgroups */
+        }
+
+        /* Colors for diff classes */
+        .diff_add {
+            background-color: #d4edda; /* Light green background */
+            color: #155724; /* Dark green text */
+        }
+
+        .diff_chg {
+            background-color: #fff3cd; /* Light yellow background */
+            color: #856404; /* Dark yellow (brownish) text */
+        }
+
+        .diff_sub {
+            background-color: #f8d7da; /* Light red background */
+            color: #721c24; /* Dark red text */
+        }
+
+        /* Optional: Add hover effect for better usability */
+        td.diff_add:hover, td.diff_chg:hover, td.diff_sub:hover {
+            filter: brightness(90%); /* Slightly darken on hover */
+        }
+    </style>
 
 
+</head>
+<body>
 
-
-    </head><body>
-    
-    <table class="diff" id="difflib_chg_to562__top"
-           cellspacing="0" cellpadding="0" rules="groups" >
-        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
-        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
-        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">naive</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Baseline</th></tr></thead>
-        <tbody>
-            <tr><td class="diff_next" id="difflib_chg_to562__0"><a href="#difflib_chg_to562__top">t</a></td><td class="diff_header" id="from562_1">1</td><td nowrap="nowrap">Vincent&nbsp;can&nbsp;buy&nbsp;flowers&nbsp;in&nbsp;packages&nbsp;of&nbsp;3&nbsp;for&nbsp;$2.50&nbsp;or&nbsp;in&nbsp;packages&nbsp;of&nbsp;2&nbsp;for&nbsp;$1.&nbsp;How&nbsp;much&nbsp;money&nbsp;does&nbsp;he&nbsp;save&nbsp;by&nbsp;buying&nbsp;18&nbsp;flowers&nbsp;at&nbsp;the&nbsp;better&nbsp;price?<span class="diff_sub">&nbsp;Sebastian&nbsp;goes&nbsp;to&nbsp;buy&nbsp;icecream.</span></td><td class="diff_next"><a href="#difflib_chg_to562__top">t</a></td><td class="diff_header" id="to562_1">1</td><td nowrap="nowrap">Vincent&nbsp;can&nbsp;buy&nbsp;flowers&nbsp;in&nbsp;packages&nbsp;of&nbsp;3&nbsp;for&nbsp;$2.50&nbsp;or&nbsp;in&nbsp;packages&nbsp;of&nbsp;2&nbsp;for&nbsp;$1.&nbsp;How&nbsp;much&nbsp;money&nbsp;does&nbsp;he&nbsp;save&nbsp;by&nbsp;buying&nbsp;18&nbsp;flowers&nbsp;at&nbsp;the&nbsp;better&nbsp;price?</td></tr>
-        </tbody>
-    </table>
-    <table class="diff" id="difflib_chg_to563__top"
-           cellspacing="0" cellpadding="0" rules="groups" >
-        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
-        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
-        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">addition</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Baseline</th></tr></thead>
-        <tbody>
-            <tr><td class="diff_next" id="difflib_chg_to563__0"><a href="#difflib_chg_to563__top">t</a></td><td class="diff_header" id="from563_1">1</td><td nowrap="nowrap"><span class="diff_sub">Vincent&nbsp;can&nbsp;buy&nbsp;flowers&nbsp;in&nbsp;packages&nbsp;of&nbsp;3&nbsp;for&nbsp;$2.50&nbsp;or&nbsp;in&nbsp;packages&nbsp;of&nbsp;2&nbsp;for&nbsp;$1.&nbsp;The&nbsp;packaging&nbsp;of&nbsp;the&nbsp;flowers&nbsp;is&nbsp;made&nbsp;from&nbsp;recyclable&nbsp;materials&nbsp;to&nbsp;reduce&nbsp;waste&nbsp;and&nbsp;promote&nbsp;environmental&nbsp;sustainability.&nbsp;How&nbsp;much&nbsp;money&nbsp;does&nbsp;he&nbsp;save&nbsp;by&nbsp;buying&nbsp;18&nbsp;flowers&nbsp;at&nbsp;the&nbsp;better&nbsp;price?</span></td><td class="diff_next"><a href="#difflib_chg_to563__top">t</a></td><td class="diff_header" id="to563_1">1</td><td nowrap="nowrap"><span class="diff_add">Vincent&nbsp;can&nbsp;buy&nbsp;flowers&nbsp;in&nbsp;packages&nbsp;of&nbsp;3&nbsp;for&nbsp;$2.50&nbsp;or&nbsp;in&nbsp;packages&nbsp;of&nbsp;2&nbsp;for&nbsp;$1.&nbsp;How&nbsp;much&nbsp;money&nbsp;does&nbsp;he&nbsp;save&nbsp;by&nbsp;buying&nbsp;18&nbsp;flowers&nbsp;at&nbsp;the&nbsp;better&nbsp;price?</span></td></tr>
-        </tbody>
-    </table>
-    <table class="diff" id="difflib_chg_to564__top"
-           cellspacing="0" cellpadding="0" rules="groups" >
-        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
-        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
-        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">lexicon</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Baseline</th></tr></thead>
-        <tbody>
-            <tr><td class="diff_next" id="difflib_chg_to564__0"><a href="#difflib_chg_to564__top">t</a></td><td class="diff_header" id="from564_1">1</td><td nowrap="nowrap">Vincent&nbsp;can&nbsp;buy&nbsp;flowers&nbsp;in&nbsp;packages&nbsp;of&nbsp;3&nbsp;for&nbsp;$2.50&nbsp;or&nbsp;in&nbsp;packages&nbsp;of&nbsp;2&nbsp;for&nbsp;$1.&nbsp;How&nbsp;m<span class="diff_chg">ore</span>&nbsp;money&nbsp;does&nbsp;he&nbsp;save&nbsp;by&nbsp;buying&nbsp;18&nbsp;flowers&nbsp;at&nbsp;the&nbsp;<span class="diff_chg">ch</span>e<span class="diff_chg">ap</span>er&nbsp;price?</td><td class="diff_next"><a href="#difflib_chg_to564__top">t</a></td><td class="diff_header" id="to564_1">1</td><td nowrap="nowrap">Vincent&nbsp;can&nbsp;buy&nbsp;flowers&nbsp;in&nbsp;packages&nbsp;of&nbsp;3&nbsp;for&nbsp;$2.50&nbsp;or&nbsp;in&nbsp;packages&nbsp;of&nbsp;2&nbsp;for&nbsp;$1.&nbsp;How&nbsp;m<span class="diff_chg">uch</span>&nbsp;money&nbsp;does&nbsp;he&nbsp;save&nbsp;by&nbsp;buying&nbsp;18&nbsp;flowers&nbsp;at&nbsp;the&nbsp;<span class="diff_chg">b</span>e<span class="diff_chg">tt</span>er&nbsp;price?</td></tr>
-        </tbody>
-    </table>
-    <table class="diff" id="difflib_chg_to565__top"
-           cellspacing="0" cellpadding="0" rules="groups" >
-        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
-        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
-        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">syntax</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Baseline</th></tr></thead>
-        <tbody>
-            <tr><td class="diff_next" id="difflib_chg_to565__0"><a href="#difflib_chg_to565__top">t</a></td><td class="diff_header" id="from565_1">1</td><td nowrap="nowrap">Vincent&nbsp;can&nbsp;buy&nbsp;flowers&nbsp;in&nbsp;packages&nbsp;of&nbsp;3&nbsp;for&nbsp;$2.50&nbsp;or&nbsp;in&nbsp;packages&nbsp;of&nbsp;2&nbsp;for&nbsp;$1.How&nbsp;much&nbsp;money&nbsp;does&nbsp;he&nbsp;save&nbsp;by&nbsp;buying&nbsp;18&nbsp;flowers&nbsp;at&nbsp;the&nbsp;better&nbsp;price?</td><td class="diff_next"><a href="#difflib_chg_to565__top">t</a></td><td class="diff_header" id="to565_1">1</td><td nowrap="nowrap">Vincent&nbsp;can&nbsp;buy&nbsp;flowers&nbsp;in&nbsp;packages&nbsp;of&nbsp;3&nbsp;for&nbsp;$2.50&nbsp;or&nbsp;in&nbsp;packages&nbsp;of&nbsp;2&nbsp;for&nbsp;$1.<span class="diff_add">&nbsp;</span>How&nbsp;much&nbsp;money&nbsp;does&nbsp;he&nbsp;save&nbsp;by&nbsp;buying&nbsp;18&nbsp;flowers&nbsp;at&nbsp;the&nbsp;better&nbsp;price?</td></tr>
-        </tbody>
-    </table></body></html>
+<table class="diff" id="difflib_chg_to562__top"
+       cellspacing="0" cellpadding="0" rules="groups">
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <thead>
+    <tr>
+        <th class="diff_next"><br/></th>
+        <th colspan="2" class="diff_header">naive</th>
+        <th class="diff_next"><br/></th>
+        <th colspan="2" class="diff_header">Baseline</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="diff_next" id="difflib_chg_to562__0"><a href="#difflib_chg_to562__top">t</a></td>
+        <td class="diff_header" id="from562_1">1</td>
+        <td nowrap="nowrap">Vincent&nbsp;can&nbsp;buy&nbsp;flowers&nbsp;in&nbsp;packages&nbsp;of&nbsp;3&nbsp;for&nbsp;$2.50&nbsp;or&nbsp;in&nbsp;packages&nbsp;of&nbsp;2&nbsp;for&nbsp;$1.&nbsp;How&nbsp;much&nbsp;money&nbsp;does&nbsp;he&nbsp;save&nbsp;by&nbsp;buying&nbsp;18&nbsp;flowers&nbsp;at&nbsp;the&nbsp;better&nbsp;price?<span
+                class="diff_sub">&nbsp;Sebastian&nbsp;goes&nbsp;to&nbsp;buy&nbsp;icecream.</span></td>
+        <td class="diff_next"><a href="#difflib_chg_to562__top">t</a></td>
+        <td class="diff_header" id="to562_1">1</td>
+        <td nowrap="nowrap">Vincent&nbsp;can&nbsp;buy&nbsp;flowers&nbsp;in&nbsp;packages&nbsp;of&nbsp;3&nbsp;for&nbsp;$2.50&nbsp;or&nbsp;in&nbsp;packages&nbsp;of&nbsp;2&nbsp;for&nbsp;$1.&nbsp;How&nbsp;much&nbsp;money&nbsp;does&nbsp;he&nbsp;save&nbsp;by&nbsp;buying&nbsp;18&nbsp;flowers&nbsp;at&nbsp;the&nbsp;better&nbsp;price?</td>
+    </tr>
+    </tbody>
+</table>
+<table class="diff" id="difflib_chg_to563__top"
+       cellspacing="0" cellpadding="0" rules="groups">
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <thead>
+    <tr>
+        <th class="diff_next"><br/></th>
+        <th colspan="2" class="diff_header">addition</th>
+        <th class="diff_next"><br/></th>
+        <th colspan="2" class="diff_header">Baseline</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="diff_next" id="difflib_chg_to563__0"><a href="#difflib_chg_to563__top">t</a></td>
+        <td class="diff_header" id="from563_1">1</td>
+        <td nowrap="nowrap"><span class="diff_sub">Vincent&nbsp;can&nbsp;buy&nbsp;flowers&nbsp;in&nbsp;packages&nbsp;of&nbsp;3&nbsp;for&nbsp;$2.50&nbsp;or&nbsp;in&nbsp;packages&nbsp;of&nbsp;2&nbsp;for&nbsp;$1.&nbsp;The&nbsp;packaging&nbsp;of&nbsp;the&nbsp;flowers&nbsp;is&nbsp;made&nbsp;from&nbsp;recyclable&nbsp;materials&nbsp;to&nbsp;reduce&nbsp;waste&nbsp;and&nbsp;promote&nbsp;environmental&nbsp;sustainability.&nbsp;How&nbsp;much&nbsp;money&nbsp;does&nbsp;he&nbsp;save&nbsp;by&nbsp;buying&nbsp;18&nbsp;flowers&nbsp;at&nbsp;the&nbsp;better&nbsp;price?</span>
+        </td>
+        <td class="diff_next"><a href="#difflib_chg_to563__top">t</a></td>
+        <td class="diff_header" id="to563_1">1</td>
+        <td nowrap="nowrap"><span class="diff_add">Vincent&nbsp;can&nbsp;buy&nbsp;flowers&nbsp;in&nbsp;packages&nbsp;of&nbsp;3&nbsp;for&nbsp;$2.50&nbsp;or&nbsp;in&nbsp;packages&nbsp;of&nbsp;2&nbsp;for&nbsp;$1.&nbsp;How&nbsp;much&nbsp;money&nbsp;does&nbsp;he&nbsp;save&nbsp;by&nbsp;buying&nbsp;18&nbsp;flowers&nbsp;at&nbsp;the&nbsp;better&nbsp;price?</span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<table class="diff" id="difflib_chg_to564__top"
+       cellspacing="0" cellpadding="0" rules="groups">
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <thead>
+    <tr>
+        <th class="diff_next"><br/></th>
+        <th colspan="2" class="diff_header">lexicon</th>
+        <th class="diff_next"><br/></th>
+        <th colspan="2" class="diff_header">Baseline</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="diff_next" id="difflib_chg_to564__0"><a href="#difflib_chg_to564__top">t</a></td>
+        <td class="diff_header" id="from564_1">1</td>
+        <td nowrap="nowrap">Vincent&nbsp;can&nbsp;buy&nbsp;flowers&nbsp;in&nbsp;packages&nbsp;of&nbsp;3&nbsp;for&nbsp;$2.50&nbsp;or&nbsp;in&nbsp;packages&nbsp;of&nbsp;2&nbsp;for&nbsp;$1.&nbsp;How&nbsp;m<span
+                class="diff_chg">ore</span>&nbsp;money&nbsp;does&nbsp;he&nbsp;save&nbsp;by&nbsp;buying&nbsp;18&nbsp;flowers&nbsp;at&nbsp;the&nbsp;<span
+                class="diff_chg">ch</span>e<span class="diff_chg">ap</span>er&nbsp;price?
+        </td>
+        <td class="diff_next"><a href="#difflib_chg_to564__top">t</a></td>
+        <td class="diff_header" id="to564_1">1</td>
+        <td nowrap="nowrap">Vincent&nbsp;can&nbsp;buy&nbsp;flowers&nbsp;in&nbsp;packages&nbsp;of&nbsp;3&nbsp;for&nbsp;$2.50&nbsp;or&nbsp;in&nbsp;packages&nbsp;of&nbsp;2&nbsp;for&nbsp;$1.&nbsp;How&nbsp;m<span
+                class="diff_chg">uch</span>&nbsp;money&nbsp;does&nbsp;he&nbsp;save&nbsp;by&nbsp;buying&nbsp;18&nbsp;flowers&nbsp;at&nbsp;the&nbsp;<span
+                class="diff_chg">b</span>e<span class="diff_chg">tt</span>er&nbsp;price?
+        </td>
+    </tr>
+    </tbody>
+</table>
+<table class="diff" id="difflib_chg_to565__top"
+       cellspacing="0" cellpadding="0" rules="groups">
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <thead>
+    <tr>
+        <th class="diff_next"><br/></th>
+        <th colspan="2" class="diff_header">syntax</th>
+        <th class="diff_next"><br/></th>
+        <th colspan="2" class="diff_header">Baseline</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="diff_next" id="difflib_chg_to565__0"><a href="#difflib_chg_to565__top">t</a></td>
+        <td class="diff_header" id="from565_1">1</td>
+        <td nowrap="nowrap">Vincent&nbsp;can&nbsp;buy&nbsp;flowers&nbsp;in&nbsp;packages&nbsp;of&nbsp;3&nbsp;for&nbsp;$2.50&nbsp;or&nbsp;in&nbsp;packages&nbsp;of&nbsp;2&nbsp;for&nbsp;$1.How&nbsp;much&nbsp;money&nbsp;does&nbsp;he&nbsp;save&nbsp;by&nbsp;buying&nbsp;18&nbsp;flowers&nbsp;at&nbsp;the&nbsp;better&nbsp;price?</td>
+        <td class="diff_next"><a href="#difflib_chg_to565__top">t</a></td>
+        <td class="diff_header" id="to565_1">1</td>
+        <td nowrap="nowrap">Vincent&nbsp;can&nbsp;buy&nbsp;flowers&nbsp;in&nbsp;packages&nbsp;of&nbsp;3&nbsp;for&nbsp;$2.50&nbsp;or&nbsp;in&nbsp;packages&nbsp;of&nbsp;2&nbsp;for&nbsp;$1.<span
+                class="diff_add">&nbsp;</span>How&nbsp;much&nbsp;money&nbsp;does&nbsp;he&nbsp;save&nbsp;by&nbsp;buying&nbsp;18&nbsp;flowers&nbsp;at&nbsp;the&nbsp;better&nbsp;price?
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{
+  "builder_name": "parquet",
+  "citation": "",
+  "config_name": "main_naive",
+  "dataset_name": "gsm8k-no_op-plus",
+  "dataset_size": 755940,
+  "description": "",
+  "download_checksums": {
+    "hf://datasets/LFrancis/GSM8k-NoOp-Plus@04deb2844d24e0f52de8999c07ad30924d979eae/main_naive/train-00000-of-00001.parquet": {
+      "num_bytes": 421481,
+      "checksum": null
+    }
+  },
+  "download_size": 421481,
+  "features": {
+    "question": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "answer": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "generated_answer": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "generated_cot": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 1177421,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 755940,
+      "num_examples": 1319,
+      "dataset_name": "gsm8k-no_op-plus"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}

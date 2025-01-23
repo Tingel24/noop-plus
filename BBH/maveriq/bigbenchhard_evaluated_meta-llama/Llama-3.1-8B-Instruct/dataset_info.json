@@ -10,7 +10,22 @@
       "dtype": "string",
       "_type": "Value"
     },
+    "choices": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "Sequence"
+    },
     "subset": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "generated_answer": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "generated_cot": {
       "dtype": "string",
       "_type": "Value"
     }

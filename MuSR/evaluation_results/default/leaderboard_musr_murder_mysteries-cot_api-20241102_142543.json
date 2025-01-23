@@ -1,141 +1,141 @@
 {
-    "results": {
-        "leaderboard_musr_murder_mysteries": {
-            "alias": "leaderboard_musr_murder_mysteries",
-            "acc_norm,none": 0.532,
-            "acc_norm_stderr,none": 0.031621252575725574
-        }
-    },
-    "group_subtasks": {
-        "leaderboard_musr_murder_mysteries": []
-    },
-    "configs": {
-        "leaderboard_musr_murder_mysteries": {
-            "task": "leaderboard_musr_murder_mysteries",
-            "dataset_path": "TAUR-Lab/MuSR",
-            "test_split": "murder_mysteries",
-            "doc_to_text": "def doc_to_text(doc):\n    \"\"\"\n    Convert a doc to text.\n    \"\"\"\n    choices = \"\"\n    for i, choice in enumerate(ast.literal_eval(doc[\"choices\"])):\n        choices += f\"{i + 1} - {choice}\\n\"\n\n    text = DOC_TO_TEXT.format(\n        narrative=doc[\"narrative\"], question=doc[\"question\"], choices=choices\n    )\n\n    return text\n",
-            "doc_to_target": "{{answer_choice}}",
-            "doc_to_choice": "{{choices}}",
-            "description": "",
-            "target_delimiter": " ",
-            "fewshot_delimiter": "\n\n",
-            "num_fewshot": 0,
-            "metric_list": [
-                {
-                    "metric": "acc_norm",
-                    "aggregation": "mean",
-                    "higher_is_better": true
-                }
-            ],
-            "output_type": "multiple_choice",
-            "repeats": 1,
-            "should_decontaminate": false,
-            "metadata": {
-                "version": 1.0
-            }
-        }
-    },
-    "versions": {
-        "leaderboard_musr_murder_mysteries": 1.0
-    },
-    "n-shot": {
-        "leaderboard_musr_murder_mysteries": 0
-    },
-    "higher_is_better": {
-        "leaderboard_musr_murder_mysteries": {
-            "acc_norm": true
-        }
-    },
-    "n-samples": {
-        "leaderboard_musr_murder_mysteries": {
-            "original": 250,
-            "effective": 250
-        }
-    },
-    "config": {
-        "model": "cot-api",
-        "model_args": "pretrained=meta-llama/Llama-3.1-8B-Instruct,base_url=http://134.76.18.30:8081,api_backend=tgi,verbose=True,batch_size=10,num_concurrent=10,max_retries=0,n_cut_context_lines=1,temperature=0.5,create_tmp_file=True,log_pipeline=True,log_file=leaderboard_musr_murder_mysteries-cot_api-20241102_142543,",
-        "batch_size": null,
-        "batch_sizes": [],
-        "device": null,
-        "use_cache": null,
-        "limit": null,
-        "bootstrap_iters": 100000,
-        "gen_kwargs": null,
-        "random_seed": 0,
-        "numpy_seed": 1234,
-        "torch_seed": 1234,
-        "fewshot_seed": 1234
-    },
-    "git_hash": "ae80fd79",
-    "date": 1730553943.7436016,
-    "pretty_env_info": "PyTorch version: 2.5.1+cpu\nIs debug build: False\nCUDA used to build PyTorch: None\nROCM used to build PyTorch: N/A\n\nOS: Microsoft Windows 11 Pro\nGCC version: Could not collect\nClang version: Could not collect\nCMake version: version 3.30.0\nLibc version: N/A\n\nPython version: 3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)] (64-bit runtime)\nPython platform: Windows-11-10.0.22631-SP0\nIs CUDA available: False\nCUDA runtime version: No CUDA\nCUDA_MODULE_LOADING set to: N/A\nGPU models and configuration: No CUDA\nNvidia driver version: No CUDA\ncuDNN version: No CUDA\nHIP runtime version: N/A\nMIOpen runtime version: N/A\nIs XNNPACK available: True\n\nCPU:\nArchitecture=9\r\r\nCurrentClockSpeed=2900\r\r\nDeviceID=CPU0\r\r\nFamily=107\r\r\nL2CacheSize=4096\r\r\nL2CacheSpeed=\r\r\nManufacturer=AuthenticAMD\r\r\nMaxClockSpeed=2900\r\r\nName=AMD Ryzen 7 4800H with Radeon Graphics         \r\r\nProcessorType=3\r\r\nRevision=24577\n\nVersions of relevant libraries:\n[pip3] numpy==2.1.2\n[pip3] torch==2.5.1\n[conda] Could not collect",
-    "transformers_version": "4.46.1",
-    "upper_git_hash": "ae80fd790e253de50579da196118e0fcb5fc1944",
-    "tokenizer_pad_token": [
-        "<|eot_id|>",
-        "128009"
-    ],
-    "tokenizer_eos_token": [
-        "<|eot_id|>",
-        "128009"
-    ],
-    "tokenizer_bos_token": [
-        "<|begin_of_text|>",
-        "128000"
-    ],
-    "eot_token_id": 128009,
-    "max_length": 2047,
-    "pipeline_args": {
-        "pretrained": "meta-llama/Llama-3.1-8B-Instruct",
-        "base_url": "http://134.76.18.30:8081",
-        "api_backend": "tgi",
-        "verbose": true,
-        "batch_size": 10,
-        "num_concurrent": 10,
-        "max_retries": 0,
-        "n_cut_context_lines": 1,
-        "temperature": 0.5,
-        "create_tmp_file": true,
-        "log_pipeline": true,
-        "pipeline_name": "cot-api",
-        "task": "leaderboard_musr_murder_mysteries",
-        "limit": null
-    },
-    "compute": {
-        "meta-llama/Llama-3.1-8B-Instruct": {
-            "prompt_tokens": 725735,
-            "completion_tokens": 106055,
-            "total_tokens": 831790,
-            "api_calls": 750
-        },
-        "total": {},
-        "n_tasks": 250
-    },
-    "all_kwargs": {
-        "pretrained": "meta-llama/Llama-3.1-8B-Instruct",
-        "base_url": "http://134.76.18.30:8081",
-        "api_backend": "tgi",
-        "tokenizer_backend": "huggingface",
-        "temperature": 0.5,
-        "max_gen_toks": 1000,
-        "n_cut_context_lines": 1,
-        "system_instruction": "{role_prompt} Solve the task provided by the user while thinking step by step. Make sure to state your answer at the end of the response.",
-        "role_prompt": "You are a reasoning expert.",
-        "final_answer_prompt": "Final answer of choices {choices_str}:",
-        "batch_size": 10,
-        "num_concurrent": 10,
-        "max_retries": 0,
-        "verbose": true,
-        "log_file": "leaderboard_musr_murder_mysteries-cot_api-20241102_142543",
-        "log_pipeline": true,
-        "create_tmp_file": true,
-        "seed": 1234,
-        "args": [],
-        "allowed_api_backends": [
-            "vllm",
-            "tgi"
-        ]
+  "results": {
+    "leaderboard_musr_murder_mysteries": {
+      "alias": "leaderboard_musr_murder_mysteries",
+      "acc_norm,none": 0.532,
+      "acc_norm_stderr,none": 0.031621252575725574
     }
+  },
+  "group_subtasks": {
+    "leaderboard_musr_murder_mysteries": []
+  },
+  "configs": {
+    "leaderboard_musr_murder_mysteries": {
+      "task": "leaderboard_musr_murder_mysteries",
+      "dataset_path": "TAUR-Lab/MuSR",
+      "test_split": "murder_mysteries",
+      "doc_to_text": "def doc_to_text(doc):\n    \"\"\"\n    Convert a doc to text.\n    \"\"\"\n    choices = \"\"\n    for i, choice in enumerate(ast.literal_eval(doc[\"choices\"])):\n        choices += f\"{i + 1} - {choice}\\n\"\n\n    text = DOC_TO_TEXT.format(\n        narrative=doc[\"narrative\"], question=doc[\"question\"], choices=choices\n    )\n\n    return text\n",
+      "doc_to_target": "{{answer_choice}}",
+      "doc_to_choice": "{{choices}}",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": {
+        "version": 1.0
+      }
+    }
+  },
+  "versions": {
+    "leaderboard_musr_murder_mysteries": 1.0
+  },
+  "n-shot": {
+    "leaderboard_musr_murder_mysteries": 0
+  },
+  "higher_is_better": {
+    "leaderboard_musr_murder_mysteries": {
+      "acc_norm": true
+    }
+  },
+  "n-samples": {
+    "leaderboard_musr_murder_mysteries": {
+      "original": 250,
+      "effective": 250
+    }
+  },
+  "config": {
+    "model": "cot-api",
+    "model_args": "pretrained=meta-llama/Llama-3.1-8B-Instruct,base_url=http://134.76.18.30:8081,api_backend=tgi,verbose=True,batch_size=10,num_concurrent=10,max_retries=0,n_cut_context_lines=1,temperature=0.5,create_tmp_file=True,log_pipeline=True,log_file=leaderboard_musr_murder_mysteries-cot_api-20241102_142543,",
+    "batch_size": null,
+    "batch_sizes": [],
+    "device": null,
+    "use_cache": null,
+    "limit": null,
+    "bootstrap_iters": 100000,
+    "gen_kwargs": null,
+    "random_seed": 0,
+    "numpy_seed": 1234,
+    "torch_seed": 1234,
+    "fewshot_seed": 1234
+  },
+  "git_hash": "ae80fd79",
+  "date": 1730553943.7436016,
+  "pretty_env_info": "PyTorch version: 2.5.1+cpu\nIs debug build: False\nCUDA used to build PyTorch: None\nROCM used to build PyTorch: N/A\n\nOS: Microsoft Windows 11 Pro\nGCC version: Could not collect\nClang version: Could not collect\nCMake version: version 3.30.0\nLibc version: N/A\n\nPython version: 3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)] (64-bit runtime)\nPython platform: Windows-11-10.0.22631-SP0\nIs CUDA available: False\nCUDA runtime version: No CUDA\nCUDA_MODULE_LOADING set to: N/A\nGPU models and configuration: No CUDA\nNvidia driver version: No CUDA\ncuDNN version: No CUDA\nHIP runtime version: N/A\nMIOpen runtime version: N/A\nIs XNNPACK available: True\n\nCPU:\nArchitecture=9\r\r\nCurrentClockSpeed=2900\r\r\nDeviceID=CPU0\r\r\nFamily=107\r\r\nL2CacheSize=4096\r\r\nL2CacheSpeed=\r\r\nManufacturer=AuthenticAMD\r\r\nMaxClockSpeed=2900\r\r\nName=AMD Ryzen 7 4800H with Radeon Graphics         \r\r\nProcessorType=3\r\r\nRevision=24577\n\nVersions of relevant libraries:\n[pip3] numpy==2.1.2\n[pip3] torch==2.5.1\n[conda] Could not collect",
+  "transformers_version": "4.46.1",
+  "upper_git_hash": "ae80fd790e253de50579da196118e0fcb5fc1944",
+  "tokenizer_pad_token": [
+    "<|eot_id|>",
+    "128009"
+  ],
+  "tokenizer_eos_token": [
+    "<|eot_id|>",
+    "128009"
+  ],
+  "tokenizer_bos_token": [
+    "<|begin_of_text|>",
+    "128000"
+  ],
+  "eot_token_id": 128009,
+  "max_length": 2047,
+  "pipeline_args": {
+    "pretrained": "meta-llama/Llama-3.1-8B-Instruct",
+    "base_url": "http://134.76.18.30:8081",
+    "api_backend": "tgi",
+    "verbose": true,
+    "batch_size": 10,
+    "num_concurrent": 10,
+    "max_retries": 0,
+    "n_cut_context_lines": 1,
+    "temperature": 0.5,
+    "create_tmp_file": true,
+    "log_pipeline": true,
+    "pipeline_name": "cot-api",
+    "task": "leaderboard_musr_murder_mysteries",
+    "limit": null
+  },
+  "compute": {
+    "meta-llama/Llama-3.1-8B-Instruct": {
+      "prompt_tokens": 725735,
+      "completion_tokens": 106055,
+      "total_tokens": 831790,
+      "api_calls": 750
+    },
+    "total": {},
+    "n_tasks": 250
+  },
+  "all_kwargs": {
+    "pretrained": "meta-llama/Llama-3.1-8B-Instruct",
+    "base_url": "http://134.76.18.30:8081",
+    "api_backend": "tgi",
+    "tokenizer_backend": "huggingface",
+    "temperature": 0.5,
+    "max_gen_toks": 1000,
+    "n_cut_context_lines": 1,
+    "system_instruction": "{role_prompt} Solve the task provided by the user while thinking step by step. Make sure to state your answer at the end of the response.",
+    "role_prompt": "You are a reasoning expert.",
+    "final_answer_prompt": "Final answer of choices {choices_str}:",
+    "batch_size": 10,
+    "num_concurrent": 10,
+    "max_retries": 0,
+    "verbose": true,
+    "log_file": "leaderboard_musr_murder_mysteries-cot_api-20241102_142543",
+    "log_pipeline": true,
+    "create_tmp_file": true,
+    "seed": 1234,
+    "args": [],
+    "allowed_api_backends": [
+      "vllm",
+      "tgi"
+    ]
+  }
 }

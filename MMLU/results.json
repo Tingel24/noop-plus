@@ -1,10 +1,8 @@
 {
-    "scores": {
-        "addition": 0.6734083463894032,
-        "lexicon": 0.6826662868537245,
-        "syntax": 0.6845890898732374,
-        "our_baseline": 0.7028913260219342,
-        "baseline": 0.7026776812419884
-    },
-    "model": "meta-llama/Llama-3.1-8B-Instruct"
+  "meta-llama/Llama-3.1-8B-Instruct": {
+    "addition": 0.6734083463894032,
+    "lexicon": 0.6826662868537245,
+    "syntax": 0.6845890898732374,
+    "our_baseline": 0.7028913260219342
+  }
 }

@@ -4,11 +4,14 @@
       "filename": "data-00000-of-00001.arrow"
     }
   ],
-  "_fingerprint": "1236a8fc6b88ae42",
+  "_fingerprint": "91625ede9abfb6cf",
   "_format_columns": [
     "input",
     "target",
-    "subset"
+    "choices",
+    "subset",
+    "generated_answer",
+    "generated_cot"
   ],
   "_format_kwargs": {},
   "_format_type": null,
