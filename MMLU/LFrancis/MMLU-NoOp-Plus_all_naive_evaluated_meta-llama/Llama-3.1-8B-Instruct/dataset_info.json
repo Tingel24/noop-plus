@@ -31,6 +31,24 @@
     "answer": {
       "dtype": "int64",
       "_type": "Value"
+    },
+    "logprobs": {
+      "A": {
+        "dtype": "float64",
+        "_type": "Value"
+      },
+      "B": {
+        "dtype": "float64",
+        "_type": "Value"
+      },
+      "C": {
+        "dtype": "float64",
+        "_type": "Value"
+      },
+      "D": {
+        "dtype": "float64",
+        "_type": "Value"
+      }
     }
   },
   "homepage": "",

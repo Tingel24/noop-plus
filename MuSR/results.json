@@ -1,10 +1,12 @@
 {
-  "meta-llama/Llama-3.1-8B-Instruct": {
-    "addition": 0.4069583,
-    "lexicon": 0.38978125,
-    "syntax": 0.39117708333,
-    "naive": 0.409625,
-    "baseline": 0,
-    "our_baseline": 0.40282291666
-  }
+    "meta-llama/Llama-3.1-8B-Instruct": {
+        "addition": 0.3425925925925926,
+        "syntax": 0.2962962962962963,
+        "baseline": 0.3505291005291005,
+        "naive": 0.36507936507936506,
+        "typo": 0.27116402116402116,
+        "scramble": 0.25132275132275134,
+        "lexicon": 0.3333333333333333,
+        "our_baseline": 0.3425925925925926
+    }
 }

@@ -1,29 +1,27 @@
 import ast
 import json
 import os
+import string
 from concurrent.futures import ThreadPoolExecutor
-from random import random, choice, shuffle
+from random import choice, shuffle, randint, sample
+from random import random
 from typing import List
 
+import spacy
 from datasets import Dataset
 
+nlp = spacy.load("en_core_web_sm")
 
 def save_value_to_json(label, value, model: str, file_path="results.json"):
-    # Check if the JSON file exists
+    """Saves values to a JSON file for logging results."""
     if os.path.exists(file_path):
-        # Read the existing JSON content
         with open(file_path, "r") as file:
             data = json.load(file)
-        if not model in data.keys():
+        if model not in data:
             data[model] = {}
     else:
-        # Create a new dictionary if the file doesn't exist
         data = {model: {}}
-
-    # Update the dictionary with the new key-value pair
     data[model][label] = value
-
-    # Write the updated dictionary back to the JSON file
     with open(file_path, "w") as file:
         json.dump(data, file, indent=4)
 
@@ -91,7 +89,7 @@ It is extremely important that the sentence does not effect the answer to the qu
     response = client.chat.completions.create(messages=[{"role": "user", "content": addition_prompt(question), }],
                                               model=model, )
     result = response.choices[0].message.content
-    sentences = split_question_into_sentences(question, nlp)
+    sentences = split_question_into_sentences(question)
 
     return " ".join([*sentences[:-1], result, sentences[-1]])
 
@@ -157,49 +155,37 @@ def convert_lexicon(df, client, model, nlp, question_column='question'):
     return Dataset.from_pandas(df_lex)
 
 
-def rephrase_question(question, nlp):
-    # Parse the sentence
-    doc = nlp(question)
-    proper_nouns = {token.text.lower() for token in doc if token.pos_ == "PROPN" or token.ent_type_}
+def rephrase_question(question):
+    def rephrase(sentence):
+        # Parse the sentence
+        doc = nlp(question)
+        proper_nouns = {token.text.lower() for token in doc if token.pos_ == "PROPN" or token.ent_type_}
 
-    # Example: Moving adverbs to the beginning
-    words = []
-    adverbs = []
+        # Example: Moving adverbs to the beginning
+        words = []
+        adverbs = []
 
-    # Split ADV from sentence
-    for token in doc:
-        word = token.text_with_ws.capitalize() if token.text.lower() in proper_nouns else token.text_with_ws.lower()
-        if token.pos_ == "ADV":  # Identify adverbs
-            adverbs.append(word)
-        else:
-            words.append(word)
+        # Split ADV from sentence
+        for token in doc:
+            word = token.text_with_ws.capitalize() if token.text.lower() in proper_nouns else token.text_with_ws.lower()
+            if token.pos_ == "ADV":  # Identify adverbs
+                adverbs.append(word)
+            else:
+                words.append(word)
 
-    reordered = "".join(adverbs + words)
-    # Capitalize the first word of the sentence
-    if reordered:
-        reordered = reordered[0].upper() + reordered[1:]
+        reordered = "".join(adverbs + words)
+        # Capitalize the first word of the sentence
+        if reordered:
+            reordered = reordered[0].upper() + reordered[1:]
 
-    return reordered
+        return reordered
+    return " ".join(
+        [rephrase(sentence) for sentence in split_question_into_sentences(question)])
 
-
-def split_question_into_sentences(question, nlp):
+def split_question_into_sentences(question):
     doc = nlp(question)
     sentences = [sent.text for sent in doc.sents]
     return sentences
-
-
-def convert_syntax_row(question_column, nlp):
-    def row_function(row):
-        row[question_column] = " ".join(
-            [rephrase_question(sentence, nlp) for sentence in split_question_into_sentences(row[question_column], nlp)])
-        return row
-
-    return row_function
-
-
-def convert_syntax(df, nlp, question_column="question"):
-    df_syn = df.progress_apply(convert_syntax_row(question_column, nlp), axis=1)
-    return Dataset.from_pandas(df_syn)
 
 
 def mistype_question(question: str):
@@ -258,20 +244,7 @@ def mistype_question(question: str):
     ])
 
 
-def convert_typo_row(question_column):
-    def row_function(row):
-        row[question_column] = mistype_question(row[question_column])
-        return row
-
-    return row_function
-
-
-def convert_typo(df, question_column="question"):
-    df_typo = df.progress_apply(convert_typo_row(question_column), axis=1)
-    return Dataset.from_pandas(df_typo)
-
-
-def scramble_question(question, nlp):
+def scramble_question(question):
     doc = nlp(question)
     words = [token.text_with_ws for token in doc]
 
@@ -290,15 +263,78 @@ def scramble_question(question, nlp):
         get_scramble(w) for w in words
     ])
 
+# Character-Level Transformations
+TYPO_CHANCE = 0.1
+def typo_qwerty(text: str) -> str:
+    qwerty_map = {'a': 'qwsz', 'b': 'vghn', 'c': 'xdfv', 'd': 'serfcx', 'e': 'wsdr',
+                  'f': 'drtgvc', 'g': 'ftyhbv', 'h': 'gyujnb', 'i': 'uojk', 'j': 'huikmn',
+                  'k': 'jiolm', 'l': 'kop', 'm': 'njk', 'n': 'bhjm', 'o': 'iklp',
+                  'p': 'ol', 'q': 'wa', 'r': 'edft', 's': 'azwxed', 't': 'rfyg',
+                  'u': 'yihj', 'v': 'cfgb', 'w': 'qeas', 'x': 'zsdc', 'y': 'tghu', 'z': 'asx'}
+    return "".join(choice(qwerty_map.get(c, c)) if c.isalpha() and random() < 0.2 else c for c in text)
 
-def convert_scramble_row(question_column, nlp):
+def typo_doubling(text: str) -> str:
+    return "".join(c * 2 if random() < TYPO_CHANCE else c for c in text)
+
+def typo_deletion(text: str) -> str:
+    return "".join("" if random() < TYPO_CHANCE else c for c in text)
+
+def typo_hold_down(text: str) -> str:
+    return "".join(c * randint(2, 4) if random() < TYPO_CHANCE else c for c in text)
+
+def typo_add_random(text: str) -> str:
+    return "".join(c + choice(string.ascii_lowercase) if random() < TYPO_CHANCE else c for c in text)
+
+def shuffle_inner(text: str) -> str:
+    words = text.split()
+    shuffled_words = [w if len(w) <= 3 else w[0] + "".join(sample((list(w[1:-1])), len((list(w[1:-1]))))) + w[-1] for w in words]
+    return " ".join(shuffled_words)
+
+def shuffle_all(text: str) -> str:
+    text_list = list(text)
+    shuffle(text_list)
+    return "".join(text_list)
+
+def shuffle_vocals(text: str) -> str:
+    vowels = 'aeiou'
+    text_list = list(text)
+    vowel_indices = [i for i, c in enumerate(text_list) if c in vowels]
+    shuffle(vowel_indices)
+    shuffled_text = list(text)
+    for orig, shuffled in zip(vowel_indices, vowel_indices):
+        shuffled_text[orig] = text_list[shuffled]
+    return "".join(shuffled_text)
+
+def character_mirroring(text: str) -> str:
+    mirror_map = {'p': 'q', 'q': 'p', 'b': 'd', 'd': 'b'}
+    return "".join(mirror_map.get(c, c) for c in text)
+
+def ocr_error(text: str) -> str:
+    ocr_map = {'o': '0', 'l': '1', 's': '5', 'b': '8'}
+    return "".join(ocr_map.get(c, c) for c in text)
+
+def transform_text(text: str, transformation: str):
+    transformations = {
+        'typo_qwerty': typo_qwerty,
+        'typo_doubling': typo_doubling,
+        'typo_deletion': typo_deletion,
+        'typo_hold_down': typo_hold_down,
+        'typo_add_random': typo_add_random,
+        'shuffle_inner': shuffle_inner,
+        'shuffle_all': shuffle_all,
+        'shuffle_vocals': shuffle_vocals,
+        'character_mirroring': character_mirroring,
+        'ocr_error': ocr_error,
+        "scramble_question": scramble_question,
+    }
+    return transformations.get(transformation, lambda x: x)(text)
+
+def convert_transformation_row(question_column, transformation):
     def row_function(row):
-        row[question_column] = scramble_question(row[question_column], nlp)
+        row[question_column] = transform_text(row[question_column], transformation)
         return row
-
     return row_function
 
-
-def convert_scramble(df, nlp, question_column="question"):
-    df_scramble = df.progress_apply(convert_scramble_row(question_column, nlp), axis=1)
-    return Dataset.from_pandas(df_scramble)
+def convert_transformation(df, transformation, question_column="question"):
+    df_transformed = df.progress_apply(convert_transformation_row(question_column, transformation), axis=1)
+    return Dataset.from_pandas(df_transformed)
