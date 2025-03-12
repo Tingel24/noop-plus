@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-<a><img src="images/noopplus-logo.png" alt="FawnRescue" width="128" height="128" title="FawnRescue"></a>
+<a><img src="images/noopplus-logo.png" alt="NoOp+" width="128" height="128" title="NoOp+"></a>
   <h3 align="center">NoOp+</h3>
   <p align="center">
     Math Retrieval Seminar<br />
